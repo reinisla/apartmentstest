@@ -1,0 +1,9 @@
+<h1>Editing Comment</h1>
+
+<%= form_for ([@ticket, @reply]) do |f| %>
+	          <div ><%= f.text_area :content, cols: "78", rows: "3"%><br/>
+	          <%= submit_tag "Submit",class: "btn btn-info" %></div>
+	        <% end %> 
+<br />
+<br/>
+<%= link_to 'Back', ticket_path(@ticket) %>

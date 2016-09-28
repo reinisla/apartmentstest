@@ -1,0 +1,13 @@
+<h1>Editing Property</h1>
+
+<%= render 'form', property: @property %>
+
+
+<div >
+<% if can? :update, @property%>
+          <%= link_to 'Delete', @property, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger"%>
+<% end %>
+</div>
+<br />
+<br/>
+<%= link_to 'Back', properties_path %>

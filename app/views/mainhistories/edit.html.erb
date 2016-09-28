@@ -1,0 +1,18 @@
+  <%= form_for ([@property, @flat, @mainhistory]) do |f| %>	  
+    <%= f.label "Problem" %>
+    <%= f.text_area :problem, required: true %>
+    <br />
+     <%= f.label "Name" %>
+    <%= f.text_field :name, required: true %>
+    <br />
+    <%= f.label "Surname" %>
+    <%= f.text_field :surname, required: true %>
+    <br />
+    <%= f.label "Date of fix" %>
+    <%= f.date_field :fix_date,  required: true %>
+    <br />  
+    <br />
+	<%= submit_tag "Submit",class: "btn btn-info" %>    
+<% end %> 
+<br />
+ <%= link_to 'Delete Fix', property_flat_mainhistory_path(@property,@mainhistory.flat_id, @mainhistory), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>

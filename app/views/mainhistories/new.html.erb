@@ -1,0 +1,15 @@
+<%= form_for ([@property, @flat, @flat.mainhistories.build()]) do |f| %>	  
+    <%= f.label "Problem" %>
+    <%= f.text_area :problem, required: true %>
+    <br />
+      <%= f.label "Name" %>
+    <%= f.text_field :name, required: true %>
+    <br />
+    <%= f.label "Surname" %>
+    <%= f.text_field :surname, required: true %>
+    <br />
+    <%= f.label "Date of fix" %>
+    <%= f.date_field :fix_date,  required: true, :value => Date.today.try(:strftime, "%d/%m/%Y") %>
+    <br />  
+	<%= submit_tag "Submit",class: "btn btn-info" %>    
+<% end %> 

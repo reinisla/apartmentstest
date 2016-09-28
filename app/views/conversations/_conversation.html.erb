@@ -1,0 +1,30 @@
+
+<%= link_to  conversation_path(conversation) do %>
+<% if conversation.is_read?(current_user) == false then %>
+<div style="background-color:#EBE7E7">
+<% else %>
+<div>
+<% end %>
+  <div class="media">
+    <div class="media-left"> 
+    
+      <%= image_tag conversation.originator.avatar.small.url %>  
+     
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">
+      
+        <%= conversation.originator.name %>&nbsp<%= conversation.originator.surname %> <br>
+   
+      <br />
+        <small><b>Subject: </b><%= conversation.subject %></small><br>
+        <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small><br />
+        <small><b>Last message from: </b><%= conversation.last_sender.name %> <%= conversation.last_sender.surname %></small><br />
+      </h4>
+     
+       
+    </div>
+  </div>
+  </div>
+<% end %>
+<br />

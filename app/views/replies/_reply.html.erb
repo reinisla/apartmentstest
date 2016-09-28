@@ -1,0 +1,18 @@
+<div style="background-color:#A7D9F9"><b><%= reply.user.name %> </s> <%= reply.user.surname %></b> &nbsp 
+      <%= time_ago_in_words(reply.created_at) %> ago 
+</div>
+
+<h5 style="background-color:#EAF5FC; padding-bottom:5%; margin-top:0;padding-top:1%;margin-bottom:0;"><%= reply.content %></h5>
+
+
+
+<div style="margin-bottom:3%; ">
+<% if @ticket.status == false %>  
+	<% if can? :update, reply%>
+		<%= link_to 'Edit', edit_ticket_reply_path(reply.ticket_id, reply)  %> 
+	<% end %>
+	<% if can? :destroy, reply%>
+		<%= link_to 'Delete', ticket_reply_path(reply.ticket_id, reply), method: :delete, data: {confirm: "Are you sure?"} %> 
+	<% end %>
+<% end %>
+</div>

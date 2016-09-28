@@ -1,0 +1,173 @@
+<p id="notice"><%= notice %></p>
+<div class="spacer"></div>
+<div class="row bg-white margin-lr-0 prop-img-cont">
+  <div class="col-md-7 col-xs-12 padding-lr-0" id="prop-img" >
+    <span class="property-img-show "> <%= image_tag @property.property_image.medium_land.url %></span>
+  </div>
+  <div class=" col-md-5 col-xs-12 properties-nav ">
+    <div class="row ">
+      <div class="col-md-12 col-xs-12 nav-bg text-center">
+        <h2 class="h3white centr-title" ><%= @property.housename %></h2>
+      </div>
+      <div class="col-md-12 col-xs-12 prop-box-1">
+        <h4>Address: <%= @property.address %></h4>
+      </div>
+      <div class="col-md-12 col-xs-12 prop-box-1">
+        <h4>Zip Code: <%= @property.zipcode %> <%= @property.city %></h4>
+      </div>
+      <div class="col-md-12 col-xs-12">
+        <div class="row prop-box-2">
+          <div class="col-md-4 col-xs-4 text-center">
+            <h4><%= image_tag @property.user.avatar.small_small.url, class: "border-radius-50" %></h4>
+          </div>
+          <div class="col-md-8 col-xs-8">
+            <h4>Property owned by: <br>
+               <b><%= @property.user.name %> <%= @property.user.surname %></b></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row nav-bg padbot0 ">
+      <div class="col-md-6 col-xs-6">
+        <div class=" new-prop-btn  prop-btns text-center"><%= link_to (edit_property_path(@property)), class:"btn btn-lg new-btn border0" do %>
+            <span class="glyphicon glyphicon-pencil"></span><span class="pad-r-1">Edit</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-6 col-xs-6">
+        <div class=" new-prop-btn  prop-btns text-center"><%= link_to (property_documents_path(@property)), class:"btn btn-lg new-btn border0" do %>
+            <span class="glyphicon glyphicon-trash"></span><span class="pad-r-1">Delete</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spacer"></div>
+<div class="spacer"></div>
+<div class="row bg-white margin-lr-0">
+  <div class="col-md-12 col-xs-12">
+    <div class=" row properties-nav nav-bg">
+      <div class="col-md-6 col-xs-12" >
+        <h2 class="h3white centr-title">FLATS</h2>
+      </div>
+      <div class="col-md-3 col-xs-12">
+        <% if can? :read, Property%>
+          <div class=" new-prop-btn text-center"><%= link_to (property_documents_path(@property)), class:"btn btn-lg new-btn border0" do %>
+              <span class="glyphicon glyphicon-folder-open"></span><span class="pad-r-1">Property Documents</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-3 col-xs-12">
+        <% if can? :read, Property%>
+          <div class=" new-prop-btn text-center "><%= link_to (new_property_flat_path(@property)), class:"btn btn-lg new-btn border0" do %>
+              <span class="glyphicon glyphicon-plus"></span><span class="pad-r-1">Add New Flat</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="spacerem"></div>
+    <div class="row">
+      <% if @property.flats.size == 0 %>
+        <div class="text-center">
+          <h3 >There are no flats added to this Property</h3>
+          <div class="spacer"></div>
+        </div>
+      <% else %>
+        <div class="col-md-10 pad-r-0">
+          <table class = "table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>House Nr.</th>
+                <th>Flat Nr.</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Move in Date</th>
+                <th>Staus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @property.flats.each do |flat| %>
+                <tr data-link="<%= property_flat_path(flat.property_id,flat)%>">
+                  <td><%= flat.housenr %></td>
+                  <td><%= flat.flat_nr %></td>
+                  <td><%= flat.name %></td>
+                  <td><%= flat.surname %></td>
+                  <td><%= flat.join_date.try(:strftime, "%d/%m/%Y") %></td>
+                  <td><%= flat.status %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-2 pad-l-0 text-center " >
+          <table class = "table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th class="text-center">Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @property.flats.each do |flat| %>
+                <tr>
+                  <td style="padding:0;">
+                    <div class="row " >
+                      <div class="col-md-12 flat-edit-btn padding-lr-0" >
+                        <% if can? :update, flat%>
+                          <%= link_to (edit_property_flat_path(flat.property_id, flat)), class: "btn nav-bg white border0 lblue-hover" do %>
+                            <span class="glyphicon glyphicon-pencil"></span>
+                          <% end %>
+                        <% end %>
+                        <% if can? :destroy, flat%>
+                          <%= link_to (property_flat_path(flat.property_id, flat)), method: :delete, class: "btn nav-bg white border0 lblue-hover", data: {confirm: "Are you sure?"} do %>
+                            <span class="glyphicon glyphicon-trash"></span>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </div>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="spacer">
+  <div class="row bg-white margin-lr-0">
+    <div class="col-md-12 col-xs-12">
+      <div class=" row properties-nav nav-bg">
+        <div class="col-md-12 col-xs-12" >
+          <h2 class="h3white centr-title">WHITEBOARD</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+      <% if @property.whiteboards.size > 3 %>
+        <div class="col-md-12" style="height:50vh; overflow:auto;">
+          <%= render @property.whiteboards %>
+        </div>
+      <% else%>
+        <div class="col-md-12">
+          <%= render @property.whiteboards %>
+        </div>
+      <% end %>
+      <br />
+      <% if can? :update, @property%>
+        <%= form_for ([@property, @property.whiteboards.build]) do |f| %>
+          <div class="col-md-12 bg-main spacer">
+            <div class="row  spacer">
+              <div class="col-md-1"><%= image_tag current_user.avatar.small_small.url, class: "border-radius-50" %></div>
+              <div class="col-md-11"><%= f.text_area :content, rows: "3", placeholder: "Add a comment...", class: "comment-box" %><br/>
+                <%= submit_tag "Comment", class: "btn nav-bg white border0 pull-right lblue-hover" %></div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="spacer"></div>
+    </div>
+  </div>

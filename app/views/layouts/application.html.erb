@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Apartment</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="container-fluid bg-main">  
+      <div class="row "> 
+          <% if user_signed_in? %>
+            <div class="col-md-2 nav-bg min-height">
+            <div class="row prof-bg">
+            <div class="col-md-12">
+                  <div class="navbar-header width100 margin0">
+                    <div class="prof-pic"><%= image_tag current_user.avatar.medium.url, class: "border-radius-50 img-responsive" %></div>     <ul class="nav navbar-nav drop-nav">  
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><h4><%= current_user.name %>&nbsp <%= current_user.surname %> <b class="caret"></b></h4></a>
+                        <ul class="dropdown-menu drop-bg">
+                         <li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
+                         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %>  </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="navbar-header width100">
+                    <ul class="nav margin-lr-0 main-nav-bg">
+                    <h4 class="light-blue">Main</h4>
+                
+                        <li class="<%= 'active' if params[:controller] == 'properties' && %w(show index new edit).include?(params[:action]) %>">
+                          <%= link_to (properties_path) do %>             
+                            <span class="glyphicon glyphicon-home"></span><span>PROPERTIES</span>
+                          <% end %>
+                        </li> 
+                        <li class="<%= 'active' if current_page?(all_flats_path) || params[:controller] == 'flats' && %w(show index new edit).include?(params[:action])%>">
+                          <%= link_to (all_flats_path) do %>             
+                            <span class="glyphicon glyphicon-th"></span><span>FLATS</span>
+                          <% end %>
+                        </li> 
+                        
+                    </ul> 
+                    
+                     <ul class="nav margin-lr-0 main-nav-bg"> 
+                     <h4 class="light-blue">User</h4>
+                        <li class="<%= 'active' if current_page?(cpanel_posts_path(current_user)) %>">
+                          <%= link_to (cpanel_posts_path(current_user)) do %>             
+                            <span class="glyphicon glyphicon-home"></span><span>MY PROPERTIES</span>
+                          <% end %>
+                        </li> 
+                        <li class="<%= 'active' if current_page?(cpanel_postflats_path(current_user)) %>">
+                          <%= link_to (cpanel_postflats_path(current_user)) do %>             
+                            <span class="glyphicon glyphicon-th-large"></span><span>MY FLATS</span>
+                          <% end %>
+                        </li> 
+                        <% if can? :read, Cpanel%>       
+                        <li class="<%= 'active' if params[:controller] == 'tickets' && %w(index show new edit other maintenance complain).include?(params[:action]) %>">
+                          <%= link_to (tickets_path) do %>             
+                            <span class="glyphicon glyphicon-headphones"></span><span>TICKETS</span>
+                          <% end %>
+
+                        </li>
+                      <% end %>
+                        <li class="<%= 'active' if params[:controller] == 'mailbox' && %w(inbox sent trash).include?(params[:action]) || params[:controller] == 'conversations' && %w(new show).include?(params[:action]) %>"><span class="label label-danger pull-right unread-mes" ><%=unread_messages_count%></span>
+                          <%= link_to (mailbox_inbox_path) do %>             
+                            <span class="glyphicon glyphicon-envelope"></span><span>MESSAGES</span>
+                          <% end %>
+                        </li>
+                    </ul>
+                    
+                    <ul class="nav margin-lr-0 main-nav-bg">
+                    
+                      <% if can? :read, Cpanel%>
+                      <h4 class="light-blue">Admin</h4>
+                        <li class="<%= 'active' if params[:controller] == 'cpanel' && %w(index).include?(params[:action])%>">
+                          <%= link_to (cpanel_index_path) do %>             
+                            <span class="glyphicon glyphicon-eye-open"></span><span>CONTROL PANEL</span>
+                          <% end %>
+                        </li>
+                      <% end %>
+                    </ul> 
+
+                  </div>  
+
+            </div>     
+            <div class="col-md-10">
+                <div class="row search">
+               
+                  <div class="col-md-12 input-group input-group-lg">
+                    <%= form_tag search_index_path, class:"input-group-lg input-group", :method => 'get' do%>
+                       <span class="input-group-btn">
+                          <%= link_to '', :back , class:"btn btn-default btn-lg glyphicon glyphicon-arrow-left" %>
+                       </span>
+                       <div class="search-bar">
+                          <%= text_field_tag :search, params[:search], required: true, class:"form-colntrol input-lg input-field-search border0  ", placeholder:"Search for property or flat.."%>
+                       </div>
+                       <span class="input-group-btn">
+                          <%= button_tag '', type: 'submit', class:"btn btn-default btn-lg glyphicon glyphicon-search border0"%>
+                       </span>
+                    <% end %>
+                  </div>
+                </div>
+              <%= yield %> 
+          </div>
+        <% else %>
+          <div class="col-md-12">
+              <%= yield %> 
+          </div>
+        <% end %> 
+      </div>
+    </div>
+  </body>
+</html>

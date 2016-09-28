@@ -1,0 +1,432 @@
+    @import "bootstrap-sprockets";
+    @import "bootstrap";
+    $lblue: #9dcddb;
+    $dblue: #004358;
+    $orange: #fdc689;
+    $grey: #F2F2F2;
+    $white: #FFFFFF;
+    $black: #000;
+    body {
+        margin: 0;
+    }
+    
+    .margin0 {
+        margin: 0;
+    }
+    
+    .border-radius-50 {
+        border-radius: 50%;
+    }
+    
+    .bg-main {
+        background-color: $grey;
+    }
+    
+    .nav-bg {
+        background-color: $dblue;
+    }
+    
+    .lblue {
+        color: $lblue;
+    }
+    
+    .dblue {
+        color: $dblue;
+    }
+    
+    .white {
+        color: $white;
+    }
+    
+    .grey {
+        color: $grey;
+    }
+    
+    .black {
+        color: $black;
+    }
+    
+    .main-nav-bg {
+        li {
+            a {
+                color: $lblue;
+                font-size: 1.3em;
+                font-family: Calibri;
+                font-weight: bold;
+            }
+            a:focus,
+            a:hover {
+                color: $dblue;
+                background-color: $lblue;
+            }
+        }
+        .active {
+            background-color: $lblue;
+            a {
+                color: $dblue;
+            }
+        }
+    }
+    
+    .drop-nav {
+        li {
+            a {
+                color: $black;
+            }
+            a:hover,
+            a:active,
+            a:focus {
+                color: $black;
+                background-color: $orange;
+            }
+        }
+        .dropdown {
+            a:hover {
+                color: $black;
+                background-color: $orange;
+            }
+            a:active {
+                background-color: $orange;
+            }
+            ul {
+                margin-top: -8%;
+                width: 100%;
+            }
+        }
+        .dropdown-menu {
+            li {
+                background-color: $dblue;
+                a {
+                    color: $lblue;
+                }
+                a:hover {
+                    background-color: $lblue;
+                    background-image: linear-gradient(to bottom, $lblue 0, $lblue 100%);
+                    color: $dblue;
+                }
+            }
+            li:hover {
+                background-color: $lblue;
+            }
+            background-color: $lblue;
+        }
+        .dropdown-toggle {
+            li {
+                padding-top: -5%;
+            }
+        }
+    }
+    
+    .navbar-header {
+        .nav {
+            .open {
+                a:hover,
+                a:active,
+                a:focus,
+                a {
+                    background-color: $orange;
+                }
+            }
+            .drop-bg li a {
+                background-color: $dblue;
+            }
+        }
+        .glyphicon {
+            margin-right: 8%;
+        }
+    }
+    
+    .light-blue {
+        color: $lblue;
+    }
+    
+    .prof-bg {
+        background-color: $orange;
+    }
+    
+    .margin-lr-0 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .pad-r-0 {
+        padding-right: 0;
+    }
+    
+    .pad-l-0 {
+        padding-left: 0;
+    }
+    
+    .padding-lr-0 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .unread-mes {
+        margin-right: 20%;
+        margin-top: 5%;
+    }
+    
+    .min-height {
+        min-height: 100%;
+    }
+    
+    .prof-pic {
+        padding-top: 10%;
+        padding-left: 3%;
+    }
+    
+    .width100 {
+        width: 100%;
+    }
+    
+    .width10 {
+        width: 10%;
+    }
+    
+    .input-field-search {
+        text-align: center;
+    }
+    
+    .search-button {
+        width: 5%;
+    }
+    
+    .back-btn {
+        width: 5%;
+    }
+    
+    .border0 {
+        border-radius: 0;
+    }
+    
+    .input-group-lg {
+        .input-group-btn {
+            .btn {
+                border-radius: 0;
+            }
+        }
+        .search-bar {
+            input {
+                width: 100%;
+                margin-top: 1px;
+            }
+        }
+    }
+    
+    .properties-nav {
+        .h3white {
+            color: $white;
+            font-size: 1.5em;
+        }
+    }
+    
+    .new-prop,
+    .new-prop-btn {
+        .new-btn {
+            border-width: 2px;
+            border-color: $white;
+            color: $white;
+            margin: 0 auto;
+        }
+        .glyphicon {
+            margin: 0 0.1em;
+        }
+        .new-btn:hover {
+            background-color: $dblue;
+            color: $lblue;
+            border-color: $lblue;
+        }
+        .pad-r-1 {
+            margin: 0 0.5em;
+        }
+        margin-top: 0.2em;
+        margin-bottom: 0.2em;
+    }
+    
+    .property-img {
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 50%;
+    }
+    
+    .prop-user-avatar {
+        position: absolute;
+        right: 10%;
+        top: 5%;
+    }
+    
+    .bg-white {
+        background-color: $white;
+    }
+    
+    .border-grey {
+        border-width: 1px;
+        border-color: $grey;
+        border-style: solid;
+    }
+    
+    .prop-loc {
+        height: 100%;
+        .glyphicon {
+            color: $lblue;
+            font-size: 2em;
+            text-align: center;
+        }
+    }
+    
+    h5 {
+        font-size: 1.1em;
+        margin-bottom: 0;
+    }
+    
+    .thumb-border {
+        border-width: 2px;
+        border-color: $white;
+        border-style: solid;
+    }
+    
+    .overflow {
+        overflow: auto;
+    }
+    
+    .property-img-show img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
+    
+    .spacerem {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    .spacer {
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+    
+    .padbot0 {
+        bottom: 0;
+        width: 100%;
+        position: absolute;
+    }
+    
+    .prop-img-cont {
+        height: 300px;
+    }
+    
+    .properties-nav {
+        position: relative;
+        height: 100%;
+    }
+    
+    #prop-img {
+        height: 100%;
+    }
+    
+    .flat-edit-btn {
+        margin-top: 0.08em;
+        margin-bottom: 0.08em;
+    }
+    
+    .centr-title {
+        margin-top: 0.7em;
+        margin-bottom: 0.5em;
+    }
+    
+    .prop-box-1 {
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        padding-left: 3em;
+        padding-right: 3em;
+    }
+    
+    .prop-box-2 {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        padding-right: 4em;
+    }
+    
+    .comment-box {
+        width: 100%;
+        padding-right: 0.5em;
+        padding-left: 0.5em;
+    }
+    
+    #whiteboard-content {
+        padding-bottom: 0.5em;
+        margin-top: 0;
+        padding-top: 0.3em;
+        margin-bottom: 0;
+    }
+    
+    #image-comment {
+        padding-top: 0.5em;
+    }
+    
+    .lblue-hover:hover {
+        color: $white;
+        opacity: 0.9;
+    }
+    
+    .new-l-owner {
+        padding: 0.3em 0;
+    }
+    
+    #contact-sup {
+        .glyphicon {
+            margin: 0 0.3em;
+        }
+        .pad-r-1 {
+            margin: 0 0.5em;
+        }
+        .btn:focus {
+            color: $white;
+        }
+    }
+    
+    #flat-details {
+        td {
+            width: 50%;
+        }
+    }
+    
+    .capitalize {
+        text-transform: uppercase;
+    }
+    
+    .sup-text {
+        padding: 3em 2em;
+    }
+    
+    .tickets-nav {
+        border-width: 2px;
+        border-color: $grey;
+        border-style: solid;
+        a {
+            color: $black;
+        }
+        a:hover,
+        a:active,
+        a:focus {
+            color: $black;
+            background-color: $white;
+            border-bottom: solid 0.5em $dblue;
+            box-shadow: none;
+        }
+    }
+    
+    .nav-btn {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    
+    .no-border {
+        border-width: 0;
+    }
+    
+    .border-bot {
+        border-bottom: solid 0.5em $dblue;
+    }

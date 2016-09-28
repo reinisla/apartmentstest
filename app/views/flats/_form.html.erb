@@ -1,0 +1,9 @@
+ <%= form_for ([@flat, @flat.ownerhistories.build]) do |f| %>
+             
+              <%= @flat.name == :name %>
+              <%= @flat.email == :email%>
+         	  <%= @flat.join_date.try(:strftime, "%d/%m/%Y") == :move_in_date %>
+          	  <%= @flat.join_date.try(:strftime, "%d/%m/%Y") == :move_out_date %>
+
+              <%= submit_tag "Submit",class: "btn btn-info" %></div>
+            <% end %> 

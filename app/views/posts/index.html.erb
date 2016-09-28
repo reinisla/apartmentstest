@@ -1,0 +1,43 @@
+
+<p id="notice"><%= notice %></p> 
+
+
+
+<div class="row bg-white margin-lr-0 overflow">
+   <div class="col-md-12">
+      <div class=" row properties-nav nav-bg">       
+            <div class="col-md-9" >
+               <h1 class="h3white properties-title">My Properties</h1>  
+            </div>      
+            <div class="col-md-3">
+                <% if can? :create, Property%>
+                  <div class="pull-right new-prop "><%= link_to ' New Property', new_property_path, class: "btn btn-lg new-btn border0 " %>
+                  </div>
+               <% end %>
+            </div>  
+      </div>
+      <div class="row">
+         <% @properties.each do |property| %>
+            <div class="col-md-3 marg-top-1">
+               <div class="img-responsive property-img"><span class="prop-user-avatar pull-right"> <%= image_tag property.user.avatar.small_small.url, class: "border-radius-50 thumb-border" %></span>
+               <%= link_to property_path(property) do %>
+               <%= image_tag property.property_image.small.url, class:"property-img" %>
+               <% end %>
+
+                  
+               </div>
+               <div class="property-house border-grey text-center"><h4><%= property.housename%></h4></div>
+               <div class="row border-grey margin-lr-0">
+                  <div class="col-md-2 padding-lr-0 ">
+                     <div class=" prop-loc input-group-addon nav-bg "><span class="glyphicon glyphicon-globe"></span></div>
+                  </div>
+                  <div class="col-md-10">
+                     <div class="property-address text-left pad-left-10"><h5><%= property.address %></h5></div>
+                     <div class="property-postcode text-left pad-left-10"><h5><%= property.zipcode %> <%= property.city %></h5></div>  
+                  </div>  
+               </div>
+            </div>
+         <% end %>
+      </div>
+   </div>
+</div>

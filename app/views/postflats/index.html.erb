@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p> 
+<div class="row bg-white margin-lr-0 overflow">
+   <div class="col-md-12">
+      <div class=" row properties-nav nav-bg">       
+            <div class="col-md-12" >
+               <h1 class="h3white centr-title capitalize">My Flats</h1>  
+            </div>            
+      </div>
+      <div class="spacer"></div>
+       <% if @flats.size == 0 %>
+        <div class="text-center">
+          <h3 >You have no flats added to any Property</h3>
+          <div class="spacer"></div>
+        </div>
+      <% else %>
+        <div class="col-md-10 pad-r-0">
+          <table class = "table table-bordered table-striped">
+            <thead>
+              <tr>
+               <th>Address</th>
+                <th>House Nr.</th>
+                <th>Flat Nr.</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Move in Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+              <% @flats.each do |flat| %>
+                <tr data-link="<%= property_flat_path(flat.property_id,flat)%>">
+                  
+                  <td><%= flat.housenr %></td>
+                  <td><%= flat.flat_nr %></td>
+                  <td><%= flat.name %></td>
+                  <td><%= flat.surname %></td>
+                  <td><%= flat.join_date.try(:strftime, "%d/%m/%Y") %></td>
+                  <td><%= flat.status %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-2 pad-l-0 text-center " >
+          <table class = "table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th class="text-center">Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @flats.each do |flat| %>
+                <tr>
+                  <td style="padding:0;">
+                    <div class="row " >
+                      <div class="col-md-12 flat-edit-btn padding-lr-0" >
+                        <% if can? :update, flat%>
+                          <%= link_to (edit_property_flat_path(flat.property_id, flat)), class: "btn nav-bg white border0 lblue-hover" do %>
+                            <span class="glyphicon glyphicon-pencil"></span>
+                          <% end %>
+                        <% end %>
+                        <% if can? :destroy, flat%>
+                          <%= link_to (property_flat_path(flat.property_id, flat)), method: :delete, class: "btn nav-bg white border0 lblue-hover", data: {confirm: "Are you sure?"} do %>
+                            <span class="glyphicon glyphicon-trash"></span>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </div>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+      <% @addresses.each do |property|%>
+            <%= property.address %>
+            <% end %>
+   </div>
+</div>
+
+    

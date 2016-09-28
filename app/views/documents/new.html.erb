@@ -1,0 +1,21 @@
+<div class = "well">
+   <%= form_for ([@property, @property.documents.build]), html: { multipart: true }  do |f| %>
+	   <% if @document.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+	      <ul>
+	      <% @document.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  	<% end %>
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true %>
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment, required: true %><br />
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
+</div>
+<h3><%= link_to 'Back', property_documents_path(@property) %></h3>

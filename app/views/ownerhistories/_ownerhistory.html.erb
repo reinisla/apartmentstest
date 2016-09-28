@@ -1,0 +1,27 @@
+
+<table class = "table table-bordered table-striped">
+
+    <thead>
+      <tr>   
+         <th>Name</th>
+         <th>Email</th>
+         <th>Move in date</th>    
+         <th>Move out date</th>  
+      </tr>
+
+    </thead>
+    <% @flat.ownerhistories.each do |ownerhistory| %>
+    <tbody>   
+        <tr>
+        
+          <td><%= ownerhistory.name %></td>
+          <td><%= ownerhistory.email %></td>
+          <td><%= ownerhistory.move_in_date %></td>
+          <td><%= ownerhistory.move_out_date %></td>
+         
+        </tr>  
+              
+    </tbody>  
+     <% end %>
+  </table>
+  

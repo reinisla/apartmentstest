@@ -1,0 +1,300 @@
+<div class="spacer"></div>
+<div class="row bg-white margin-lr-0">
+  <div class="col-md-12 col-xs-12">
+    <div class=" row properties-nav nav-bg">
+      <div class="col-md-8 col-xs-12" >
+        <h2 class="h3white centr-title">PROPERTY DETAILS</h2>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </div>
+  <div class="col-md-12">
+    <table class = "table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>House Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Property Owned by</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @property.housename %></td>
+          <td><%= @property.address %></td>
+          <td><%= @property.zipcode %> <%= @property.city %></td>
+          <td><%= @property.name %> <%= @property.surname %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="spacer"></div>
+<div class="row bg-white margin-lr-0" >
+  <div class="col-md-12 col-xs-12 " id="flat-details">
+    <div class=" row properties-nav nav-bg">
+      <div class="col-md-8 col-xs-12" >
+        <h2 class="h3white centr-title">FLAT DETAILS</h2>
+      </div>
+      <div class="col-md-2 col-xs-12">
+        <% if can? :update, @flat%>
+          <div class=" new-prop-btn text-center"><%= link_to edit_property_flat_path, class:"btn btn-lg new-btn border0" do %>
+              <span class="glyphicon glyphicon-pencil"></span><span class="pad-r-1">Edit</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-2 col-xs-12">
+        <% if can? :update, @flat%>
+          <div class=" new-prop-btn text-center "><%= link_to property_flat_path, method: :delete, class:"btn btn-lg new-btn border0" do %>
+              <span class="glyphicon glyphicon-trash"></span><span class="pad-r-1">Delete</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="row ">
+      <div class="col-md-5 col-md-offset-1 ">
+        <div class=" row properties-nav margin-lr-0">
+          <div class="col-md-12 col-xs-12 text-center nav-bg" >
+            <h2 class="h3white centr-title">Flat Owner</h2>
+          </div>
+        </div>
+        <div class="col-md-12   padding-lr-0">
+          <table class="table table-bordered table-striped">
+            <tbody>
+              <tr>
+                <th>Name</th>
+                <td><%= @flat.name %></td>
+              </tr>
+              <tr>
+                <th>Surname</th>
+                <td><%= @flat.surname %></td>
+              </tr>
+              <tr>
+                <th>Date of Birth</th>
+                <td><%= @flat.name %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class=" row properties-nav margin-lr-0 ">
+          <div class="col-md-12 col-xs-12 nav-bg text-center" >
+            <h2 class="h3white centr-title">Contacts</h2>
+          </div>
+          <div class="col-md-12 padding-lr-0">
+            <table class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                  <th>Home Phone</th>
+                  <td><%= @flat.phone %></td>
+                </tr>
+                <tr>
+                  <th>Mobile Phone</th>
+                  <td><%= @flat.phone %></td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td><%= @flat.email %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+        <div class=" row properties-nav margin-lr-0 ">
+          <div class="col-md-12 col-xs-12 nav-bg text-center" >
+            <h2 class="h3white centr-title">Flat Details</h2>
+          </div>
+          <div class="col-md-12 padding-lr-0">
+            <table class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                  <th>House name.</th>
+                  <td><%= @flat.housenr %></td>
+                </tr>
+                <tr>
+                  <th>Flat Nr.</th>
+                  <td><%= @flat.flat_nr %></td>
+                </tr>
+                <tr>
+                  <th>Flat Status</th>
+                  <td><%= @flat.status %></td>
+                </tr>
+                <tr>
+                  <th>Move in date</th>
+                  <td><%= @flat.join_date.try(:strftime, "%d-%m-%Y") %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class=" row properties-nav margin-lr-0 ">
+          <div class="col-md-12 col-xs-12 nav-bg text-center" >
+            <h2 class="h3white centr-title">Other</h2>
+          </div>
+          <div class="col-md-12 padding-lr-0">
+            <table class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                  <th>Relatives</th>
+                  <td><%= @flat.relatives %></td>
+                </tr>
+                <tr>
+                  <th>Caretaker</th>
+                  <td><%= @flat.caretaker %></td>
+                </tr>
+                <tr>
+                  <th>More Persons</th>
+                  <td><%= @flat.morepersons %></td>
+                </tr>
+                <tr>
+                  <th>Description</th>
+                  <td><%= @flat.content %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spacer"></div>
+<div class="row bg-white margin-lr-0">
+  <div class="col-md-12 col-xs-12">
+    <div class=" row properties-nav nav-bg">
+      <div class="col-md-8 col-xs-12" >
+        <h2 class="h3white centr-title">LAST OWNER HISTORY</h2>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </div>
+  <div class="col-md-12">
+    <table class = "table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Email</th>
+          <th>Move in Date</th>
+          <th>Move out Date</th>
+          <th class="text-center">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @flat.ownerhistories.each do |ownerhistory| %>
+          <tr>
+            <td><%= ownerhistory.name %></td>
+            <td><%= ownerhistory.surname %></td>
+            <td><%= ownerhistory.email %></td>
+            <td><%= ownerhistory.move_in_date.try(:strftime, "%d-%m-%Y") %></td>
+            <td><%= ownerhistory.move_out_date.try(:strftime, "%d-%m-%Y") %></td>
+            <td class="text-center"><% if can? :destroy, @flat%>
+                <%= link_to (property_flat_ownerhistory_path(@property,@flat,ownerhistory)), method: :delete, class: "btn nav-bg white border0 lblue-hover", data: {confirm: "Are you sure?"} do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+                <% end %>
+              <% end %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="spacer"></div>
+  <%= form_for ([@property, @flat, @flat.ownerhistories.build()]) do |f| %>
+    <div class="col-md-11">
+      <table class = "table table-bordered table-striped">
+        <thead>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= f.text_field :name ,required: true, :placeholder => "Name", :value => @flat.try(:name) %></td>
+            <td><%= f.text_field :surname ,required: true,:placeholder => "Surname", :value => @flat.try(:surname) %></td>
+            <td><%= f.email_field :email ,required: true,:placeholder => "Email", :value => @flat.try(:email) %></td>
+            <td><%= f.date_field :move_in_date ,required: true, :value => @flat.try(:join_date).try(:strftime, "%d-%m-%Y") %></td>
+            <td><%= f.date_field :move_out_date, required: true, :value => Date.today.try(:strftime, "%d-%m-%Y") %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-1 new-l-owner">
+      <%= f.button  class: "btn nav-bg white border0 lblue-hover" do %>
+        <div class="glyphicon-plus"></div>
+      <% end %>
+      <div class="spacer"></div>
+    </div>
+  <% end %>
+</div>
+<div class="spacer"></div>
+<div class="row bg-white margin-lr-0">
+  <div class="col-md-12 col-lg-12 text-center" id="contact-sup">
+    <h3>Anything broken or you have a complain?</h3>
+    <h4>Contact our support!</h4>
+    <% if can? :update, Ticket %>
+      <%= link_to (new_property_flat_ticket_path(@flat.property_id, @flat)),class: "btn btn-lg nav-bg new-btn white border0 lblue-hover" do %>
+        <span class="glyphicon glyphicon-send"></span><span class="pad-r-1">Submit Ticket</span>
+      <% end %>
+    <% end %>
+    <div class="spacer"></div>
+  </div>
+</div>
+<div class="spacer"></div>
+<div class="row bg-white margin-lr-0">
+  <div class="col-md-12 col-xs-12">
+    <div class=" row properties-nav nav-bg">
+      <div class="col-md-10 col-xs-12" >
+        <h2 class="h3white centr-title">MAINTENANCE HISTORY</h2>
+      </div>
+      <div class="col-md-2"><% if can? :create, Flat %>
+          <div class= "new-prop-btn text-center"><%= link_to  (new_property_flat_mainhistory_path(@property,@flat)),class: "btn btn-lg new-btn border0" do %>
+              <span class="glyphicon glyphicon-wrench"></span><span class="pad-r-1">Add New</span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="spacer"></div>
+    <table class = "table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Problem</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Date of Fix</th>
+          <th class="text-center">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @flat.mainhistories.each do |mainhistory| %>
+          <tr>
+            <td style="width:60%"><%= mainhistory.problem %></td>
+            <td><%= mainhistory.name %></td>
+            <td><%= mainhistory.surname %></td>
+            <td><%= mainhistory.fix_date.try(:strftime, "%d/%m/%Y") %></td>
+            <td class="text-center"><% if can? :update, @flat%>
+                <%= link_to (edit_property_flat_mainhistory_path(@property,@flat,mainhistory)), class: "btn nav-bg white border0 lblue-hover" do %>
+                  <span class="glyphicon glyphicon-pencil"></span>
+                <% end %>
+              <% end %>
+              <% if can? :destroy, @flat%>
+                <%= link_to (property_flat_mainhistory_path(@property,@flat,mainhistory)), method: :delete, class: "btn nav-bg white border0 lblue-hover", data: {confirm: "Are you sure?"} do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="spacer"></div>

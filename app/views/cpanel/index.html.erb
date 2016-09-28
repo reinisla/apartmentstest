@@ -1,0 +1,59 @@
+<table class = "table table-bordered table-striped">
+   <thead>
+      <tr>
+          <th>Avatar</th>
+         <th>Name</th>
+         <th>Surname</th>
+         <th>Email</th>
+         <th>User Role </th>
+         <th>Properties</th>
+         <th>Flats</th>
+         <th>Edit</th>
+         <th>Delete</th>
+         
+      </tr>
+   </thead>
+   <tbody>
+		<% @users.each do |user| %>
+         
+        
+         <tr>
+         <td><%= image_tag user.avatar.thumb.url %></td>
+            <td><%= user.name %></td>
+            <td><%= user.surname %></td>
+            <td><%= user.email %></td>
+
+            <td>
+            
+              <%= user.role.try :name %>
+               </td>
+               
+
+               <td>
+                  <%= user.properties.size %>
+                  <%= link_to cpanel_posts_path(user) do %><u>
+                      Show </u>
+                  <% end %>
+               </td>
+               <td>
+                     <%= user.flats.size %>
+                   <%= link_to cpanel_postflats_path(user) do %><u>
+                      Show </u>
+                  <% end %>
+               </td>
+             <td> 
+                <%= link_to 'Edit', edit_user_path(user), class: "btn btn-warning"%>
+              
+            </td>
+            
+            <td><%= link_to 'Delete User', cpanel_path(user), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+            </td>
+            
+            
+            
+         </tr>
+
+      	<% end %>
+  </tbody>
+  </table>
+           

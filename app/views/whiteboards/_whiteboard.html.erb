@@ -1,0 +1,21 @@
+<div class="row spacer">
+	<div class="col-md-1"><%= image_tag whiteboard.user.avatar.small_small.url, class: "border-radius-50", id: "image-comment" %></div>
+	<div class="col-md-11">
+	<b><%= whiteboard.user.name %> </s> <%= whiteboard.user.surname %></b> &nbsp 
+	      <%= time_ago_in_words(whiteboard.created_at) %> ago 
+		<h5 id= "whiteboard-content" ><%= whiteboard.content %></h5>
+			 
+			<% if can? :update, whiteboard%>
+				<%= link_to 'Edit', edit_property_whiteboard_path(whiteboard.property_id, whiteboard)  %> 
+			<% end %>
+			<% if can? :destroy, whiteboard%>
+				<%= link_to 'Delete', property_whiteboard_path(whiteboard.property_id, whiteboard), method: :delete, data: {confirm: "Are you sure?"} %> 
+			<% end %>
+
+		
+	</div>
+
+
+	
+</div>
+
